@@ -9,12 +9,8 @@
 </mapper> -->
 
 <mapper namespace = "com.self_develop.myprojerct.loginpage.dao.LoginDAO">
-	<update id = "updateListLoginMember" parameterType = "LoginVO" resultType = "LoginVO">
+	<select id = "updateListLoginMember" parameterType = "LoginVO" resultType = "LoginVO">
 		update logical_info set user_pwd = #{user_pwd} where u_no = 1
-	</update>
-	
-	<!-- <select id = "selectListLoginMember" parameterType = "LoginVO" resultType = "LoginVO">
-		select * from logical_info
-	</select> -->
+	</select>
 
 </mapper>

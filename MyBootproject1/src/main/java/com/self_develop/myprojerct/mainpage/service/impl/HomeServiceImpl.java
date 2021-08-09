@@ -3,6 +3,7 @@ package com.self_develop.myprojerct.mainpage.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.stereotype.Repository;
 import com.self_develop.myprojerct.mainpage.dao.HomeDAO;

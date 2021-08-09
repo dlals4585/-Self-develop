@@ -6,8 +6,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,11 +42,11 @@ public class HomeController {
 		for(HomeVO i : address) { 
 			System.out.println(i.getArea_Name()); 
 		}
- 
+		
 		mov.addObject("list",address);
- 
+		
 		for(int i = 0; i<address.size();i++) {
-			System.out.println("二쇱냼 == "+address.get(i).getArea_Name()); 
+			System.out.println("주소 == "+address.get(i).getArea_Name()); 
 		}
 		
 //		mov.addObject("adr_nm",address.get(0).getArea_Name());
