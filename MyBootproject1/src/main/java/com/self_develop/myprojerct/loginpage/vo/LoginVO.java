@@ -1,4 +1,4 @@
-package com.self_develop.myprojerct.mainpage.vo;
+package com.self_develop.myprojerct.loginpage.vo;
 
 public class LoginVO {
 	String user_id = "";

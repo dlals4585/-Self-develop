@@ -1,4 +1,4 @@
-package com.self_develop.myprojerct.mainpage.controller;
+package com.self_develop.myprojerct.loginpage.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,14 +17,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 //
 
-import com.self_develop.myprojerct.mainpage.service.LoginService;
-import com.self_develop.myprojerct.mainpage.vo.LoginVO;
+import com.self_develop.myprojerct.loginpage.dao.LoginDAO;
+import com.self_develop.myprojerct.loginpage.vo.LoginVO;
 
 public class LoginController {
 		
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
-	@Autowired LoginService loginservice;
+	@Autowired 
+	private LoginDAO logindao;
 	 	
 	/*
 	 * @RequestMapping("/home.do") public @ResponseBody List<LoginVO>
@@ -35,7 +36,7 @@ public class LoginController {
 	 * eList; }
 	 */
 	
-	@RequestMapping(value = "/login.do")
+	@RequestMapping(value = "/login")
 	public String login(Locale locale, Model model) {
 		
 		Date date = new Date();
@@ -48,7 +49,7 @@ public class LoginController {
 		return "/login/login";
 	}
 	
-	@RequestMapping(value = "/logout.do")
+	@RequestMapping(value = "/logout")
 	public String logout(Locale locale, Model model) {
 		
 		Date date = new Date();
@@ -61,7 +62,7 @@ public class LoginController {
 		return "/login/logout";
 	}
 	
-	@RequestMapping(value = "/login_add.do")
+	@RequestMapping(value = "/login_add")
 	public String login_add(Locale locale, Model model) {
 		
 		Date date = new Date();
@@ -74,7 +75,7 @@ public class LoginController {
 		return "/login/login_add";
 	}
 	
-	@RequestMapping(value = "/login_delete.do")
+	@RequestMapping(value = "/login_delete")
 	public String login_delete(Locale locale, Model model) {
 		
 		Date date = new Date();
