@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace = "com.self_develop.myprojerct.loginpage.dao.LoginDAO">
+<mapper namespace = "com.self_develop.myproject.loginpage.dao.LoginDAO">
 	<select id = "selectLoginMember" parameterType = "LoginVO" resultType = "LoginVO">
 		select u_no, user_id, user_pwd, user_var_nm from logical_info
 	</select>

@@ -1,4 +1,4 @@
-package com.self_develop.myprojerct.loginpage.controller;
+package com.self_develop.myproject.loginpage.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 //
 import org.springframework.web.servlet.ModelAndView;
 
-import com.self_develop.myprojerct.loginpage.dao.LoginDAO;
-import com.self_develop.myprojerct.loginpage.vo.LoginVO;
+import com.self_develop.myproject.loginpage.dao.LoginDAO;
+import com.self_develop.myproject.loginpage.vo.LoginVO;
 
 @Controller
 public class LoginController {

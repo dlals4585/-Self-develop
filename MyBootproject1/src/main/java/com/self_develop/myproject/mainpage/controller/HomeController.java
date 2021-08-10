@@ -1,4 +1,4 @@
-package com.self_develop.myprojerct.mainpage.controller;
+package com.self_develop.myproject.mainpage.controller;
 
 import java.text.DateFormat;
 
@@ -14,9 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.self_develop.myprojerct.mainpage.dao.HomeDAO;
-import com.self_develop.myprojerct.mainpage.service.HomeService;
-import com.self_develop.myprojerct.mainpage.vo.HomeVO;
+import com.self_develop.myproject.mainpage.dao.HomeDAO;
+import com.self_develop.myproject.mainpage.service.HomeService;
+import com.self_develop.myproject.mainpage.vo.HomeVO;
 
 @Controller
 public class HomeController {

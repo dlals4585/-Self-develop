@@ -1,8 +1,8 @@
-package com.self_develop.myprojerct.loginpage.dao;
+package com.self_develop.myproject.loginpage.dao;
 
 import java.util.List;
 import org.apache.ibatis.annotations.*;
-import com.self_develop.myprojerct.loginpage.vo.*;
+import com.self_develop.myproject.loginpage.vo.*;
 
 @Mapper
 public interface LoginDAO {

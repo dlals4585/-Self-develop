@@ -1,4 +1,4 @@
-package com.self_develop.myprojerct.loginpage.vo;
+package com.self_develop.myproject.loginpage.vo;
 
 public class LoginVO {
 	int u_no = 0;					//회원번호(회원인덱스)

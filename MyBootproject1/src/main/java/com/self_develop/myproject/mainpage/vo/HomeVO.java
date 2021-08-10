@@ -1,4 +1,4 @@
-package com.self_develop.myprojerct.mainpage.vo;
+package com.self_develop.myproject.mainpage.vo;
 
 public class HomeVO {
 	int area_no = 0;			//지역인덱스
