@@ -39,15 +39,13 @@ public class HomeController {
 		
 		List<HomeVO> address = homedao.selectAddress();
 		
-		for(HomeVO i : address) { 
-			System.out.println(i.getArea_Name()); 
-		}
-		
+//		for(HomeVO i : address) { 
+//			System.out.println(i.getArea_Name()); 
+//		}
 		mov.addObject("list",address);
-		
-		for(int i = 0; i<address.size();i++) {
-			System.out.println("주소 == "+address.get(i).getArea_Name()); 
-		}
+//		for(int i = 0; i<address.size();i++) {
+//			System.out.println("주소 == "+address.get(i).getArea_Name()); 
+//		}
 		
 //		mov.addObject("adr_nm",address.get(0).getArea_Name());
 //		mov.addObject("adr_cd",address.get(1).getArea_Cd());
@@ -56,7 +54,7 @@ public class HomeController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
 		String formattedDate = dateFormat.format(date);
-		System.out.println("접속시간 == "+formattedDate);
+		System.out.println("home == "+formattedDate);
 		model.addAttribute("serverTime", formattedDate );
 		
 		return mov; 

@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,38 +32,51 @@ public class LoginController {
 	@Autowired 
 	private LoginDAO logindao;
 	
-	@RequestMapping(value = "/login")
-	public ModelAndView login(HttpServletRequest request, Locale locale, Model model) { 
+	@RequestMapping(value = "/login_update")
+	public ModelAndView login_update(HttpServletRequest request, Locale locale, Model model) { 
 		
 		ModelAndView mov = new ModelAndView(); 
-		mov.setViewName("/login/login"); 
+		mov.setViewName("/login/login_update"); 
 	 
 		Date date = new Date(); 
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
- 
+		
+		LoginVO logininfo = logindao.selectLoginMember();
+		String userid = logininfo.getUser_id();
+		String userpw = logininfo.getUser_pwd();
+		System.out.println("변경된 패스워드="+userpw);
+		mov.addObject("userid",userid);
+		mov.addObject("userpw",userpw);
+		
 		String formattedDate = dateFormat.format(date);
-		System.out.println("Logincontroller == "+formattedDate);
+		System.out.println("login_update_form == "+formattedDate);
 		model.addAttribute("serverTime", formattedDate );
 		
 		return mov;
 	}
 	
-	@RequestMapping(value = "/login_update")
-	public ModelAndView login_update(HttpServletRequest request, HttpServletResponse res, Locale locale, Model model) {
+	@RequestMapping(value = "/login_update_start")
+	public ModelAndView login_update_start(HttpServletRequest request, HttpServletResponse res, Locale locale, Model model) {
 		ModelAndView mov = new ModelAndView(); 
-		String no = request.getParameter("no");
-		String pwd = request.getParameter("pw");
-		System.out.println("no == "+no);
-		System.out.println("pwd == "+pwd);
+		
+		String id = request.getParameter("id");
+		String newpwd = request.getParameter("newpwd");
+		System.out.println("변경기준ID == "+id);
+		System.out.println("변경되는PW == "+newpwd);
+		
+		LoginVO vo = new LoginVO();
+		vo.setUser_id(id);
+		vo.setUser_pwd(newpwd);
+		logindao.updateLoginMember(vo);
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
 		String formattedDate = dateFormat.format(date);
-		System.out.println("login_update == "+formattedDate);
+		System.out.println("login_update... == "+formattedDate);
 		model.addAttribute("serverTime", formattedDate );
 		
-		mov.setViewName("redirect:/login");
+		mov.setViewName("redirect:/login_update");
 		return mov;
 	}
 	
@@ -75,7 +87,7 @@ public class LoginController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
 		String formattedDate = dateFormat.format(date);
-		System.out.println("Logincontroller == "+formattedDate);
+		System.out.println("logout == "+formattedDate);
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "/login/logout";
@@ -88,7 +100,7 @@ public class LoginController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
 		String formattedDate = dateFormat.format(date);
-		System.out.println("Logincontroller == "+formattedDate);
+		System.out.println("login_add == "+formattedDate);
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "/login/login_add";
@@ -101,7 +113,7 @@ public class LoginController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
 		String formattedDate = dateFormat.format(date);
-		System.out.println("Logincontroller == "+formattedDate);
+		System.out.println("login_delete == "+formattedDate);
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "/login/login_add";

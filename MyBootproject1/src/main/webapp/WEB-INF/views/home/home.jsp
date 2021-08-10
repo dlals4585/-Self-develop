@@ -7,7 +7,7 @@
 <html>
 <head>
 
-	<title>[main.jsp]</title>
+	<title>[home]</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -21,8 +21,11 @@
 	<script src = "https://code.jquery.com/jquery-3.1.1.min.js"></script>
 		
 	<script type="text/javascript">
-		
-		
+		function popupWindow(url, width1, hight1){
+			var left = (screen.width/2) - (width1/2);
+			var top = (screen.hight/2) - (hight1/2) - 50;
+			return window.open(url, url, 'width='+width1+', height='+hight1+', top='+top+', left='+left);
+		}
 	</script>
      
 </head>
@@ -35,7 +38,8 @@
 	
 	<div>
   		<c:import url="http://localhost:9090/side_page"></c:import>
-  		<a href="login">로그인</a>
+  		<!-- <input style="text-color:black" type="button" value = "로그인" onclick="popupWindow('login?host=${param}',410, 450);"/> -->
+  		<a href="login_update">회원정보 수정</a>
 	</div>
 	
 	<!-- 카로셀 시작 -->

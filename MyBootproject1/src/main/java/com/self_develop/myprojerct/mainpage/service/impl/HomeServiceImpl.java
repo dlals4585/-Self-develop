@@ -21,5 +21,4 @@ public class HomeServiceImpl implements HomeService{
 		// TODO Auto-generated method stub
 		return homedao.selectAddress();
 	}
-	
 }
