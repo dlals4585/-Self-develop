@@ -40,6 +40,9 @@
   		<c:import url="http://localhost:9090/side_page"></c:import>
   		<!-- <input style="text-color:black" type="button" value = "로그인" onclick="popupWindow('login?host=${param}',410, 450);"/> -->
   		<a href="login_update">회원정보 수정</a>
+  		<a href="camplist">캠핑장 지도 test</a>
+  		<input type="button" value="캠핑장 지도 test" onclick="popupWindow('camplist',500, 400);">
+  		
 	</div>
 	
 	<!-- 카로셀 시작 -->

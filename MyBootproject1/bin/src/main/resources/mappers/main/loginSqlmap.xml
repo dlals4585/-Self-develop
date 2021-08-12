@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.self_develop.myproject.loginpage.dao.LoginDAO">
+	<select id = "selectLoginMember" parameterType = "LoginVO" resultType = "LoginVO">
+		select u_no, user_id, user_pwd, user_var_nm from logical_info
+	</select>
+	
+	<select id = "updateLoginMember" parameterType = "LoginVO" resultType = "LoginVO">
+		update logical_info set user_pwd = #{user_pwd} where user_id = #{user_id}
+	</select>
+	
+</mapper>
