@@ -34,7 +34,7 @@ public class ApiController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public String getData() {
 		return "{\"result\":\"ok\"}";
-	}
+	}//test
 	
 	public String returnJson(Map<String, Object> data) {
 		String result = "";
