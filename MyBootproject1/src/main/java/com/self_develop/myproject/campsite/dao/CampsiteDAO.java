@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.*;
 import com.self_develop.myproject.campsite.vo.CampsiteVO;
+import com.self_develop.myproject.campsite.vo.GoCampImageVO;
+import com.self_develop.myproject.campsite.vo.GoCampsiteVO;
 
 @Mapper
 public interface CampsiteDAO {
@@ -13,5 +15,9 @@ public interface CampsiteDAO {
 	//public List<LoginVO> method() throw Exception;
 	//public String method() throw Exception;
 	//public int method() throw Exception;
-	//throw Exception �씠 �엳�쓣 寃쎌슦�뿉�뒗 controller�쓽 硫붿냼�뱶�뿉�룄 throw exception�쓣 �젙�쓽�빐 二쇱뼱�빞 �븿
+	//throw Exception 이 있을 경우에는 controller의 메소드에도 throw exception을 정의해 주어야 함
+	
+	public List<GoCampsiteVO> insertGoCampsite(GoCampsiteVO vo);
+	public List<GoCampsiteVO> selectGoCampsite();
+	public List<GoCampImageVO> selectGoCampimage();
 }

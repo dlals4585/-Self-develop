@@ -2,7 +2,7 @@ package com.self_develop.myproject.mainpage.vo;
 
 public class HomeVO {
 	int area_no = 0;			//지역인덱스
-	String area_Cd = "";			//지역번호
+	String area_Cd = "";		//지역번호
 	String area_Name = "";		//지역명
 	
 	
