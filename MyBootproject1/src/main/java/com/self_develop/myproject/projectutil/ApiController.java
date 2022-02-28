@@ -380,7 +380,7 @@ public class ApiController {
 			String result = "";
 			String numOfRows = "15";
 			//pageNo = "1"; 
-			//keyword = "평창";
+			//keyword = "평창"; 
 			String keyword = map.get("keyword").toString();
 			try {
 				String appName = URLEncoder.encode("렛츠캠핑", "UTF-8");
