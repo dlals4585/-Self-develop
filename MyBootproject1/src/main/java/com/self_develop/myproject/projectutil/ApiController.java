@@ -372,82 +372,88 @@ public class ApiController {
 		}
 		
 		///키워드로 검색을 하여 고캠핑정보 목록을 조회하는 기능(HashMap)
-				@ResponseBody
-				@RequestMapping(value="/getSearchCamp", method = {RequestMethod.POST})
-				//@PutMapping(value = "/getSearchCamp")
-				public String getSearchCamp(@RequestBody HashMap<String,Object> map) {
-					//Map<String, Object> urlparam = new HashMap<String,Object>();
-					String result = "";
-					String numOfRows = "15";
-					//pageNo = "1"; 
-					//keyword = "평창";
-					String keyword = map.get("keyword").toString();
-					try {
-						String appName = URLEncoder.encode("렛츠캠핑", "UTF-8");
-						keyword = URLEncoder.encode(keyword, "UTF-8");
-						
-						String url = "http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/searchList";
-						
-						String urlparam = "ServiceKey="+apikey		//인증키 (서비스키)
-								+ "&numOfRows="+numOfRows	//한 페이지 결과 수
-								+ "&pageNo="+map.get("pageNo").toString()			//현재 페이지 번호
-								+ "&MobileOS=AND"			//OS 구분(IOS (아이폰), AND (안드로이드), WIN (윈도우폰), ETC))
-								+ "&MobileApp="+appName		//서비스명=어플명
-								+ "&keyword="+keyword		//검색 요청할 키워드
-								+ "&_type=json";
-						
-						//urlparam.put("ServiceKey",apikey);
-						//result = jsonParsebody(sendPost(url,urlparam));
-						
-						//sendPost(url,urlparam);
-						
-						url += "?"+urlparam;
-						result = jsonParsebody(sendGet(url));
-						if(result.equals("")) {
-							result = "{\"item\":\"false\"}";
-						}
-					} catch (UnsupportedEncodingException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					if(result.equals(null)) {result = "";}
-					return result;
+		@ResponseBody
+		@RequestMapping(value="/getSearchCamp", method = {RequestMethod.POST})
+		//@PutMapping(value = "/getSearchCamp")
+		public String getSearchCamp(@RequestBody HashMap<String,Object> map) {
+			//Map<String, Object> urlparam = new HashMap<String,Object>();
+			String result = "";
+			String numOfRows = "15";
+			//pageNo = "1"; 
+			//keyword = "평창";
+			String keyword = map.get("keyword").toString();
+			try {
+				String appName = URLEncoder.encode("렛츠캠핑", "UTF-8");
+				keyword = URLEncoder.encode(keyword, "UTF-8");
+				
+				String url = "http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/searchList";
+				
+				String urlparam = "ServiceKey="+apikey		//인증키 (서비스키)
+						+ "&numOfRows="+numOfRows	//한 페이지 결과 수
+						+ "&pageNo="+map.get("pageNo").toString()			//현재 페이지 번호
+						+ "&MobileOS=AND"			//OS 구분(IOS (아이폰), AND (안드로이드), WIN (윈도우폰), ETC))
+						+ "&MobileApp="+appName		//서비스명=어플명
+						+ "&keyword="+keyword		//검색 요청할 키워드
+						+ "&_type=json";
+				
+				//urlparam.put("ServiceKey",apikey);
+				//result = jsonParsebody(sendPost(url,urlparam));
+				
+				//sendPost(url,urlparam);
+				
+				url += "?"+urlparam;
+				result = jsonParsebody(sendGet(url));
+				if(result.equals("")) {
+					result = "{\"item\":\"false\"}";
 				}
+			} catch (UnsupportedEncodingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if(result.equals(null)) {result = "";}
+			return result;
+		}
 	
 	
 		/// 고캠핑 컨텐츠에 해당하는 이미지URL 목록을 조회하는 기능
-			@RequestMapping(value = "/getimageCamplist/{contentId}", method = RequestMethod.GET)
-			@ResponseStatus(value = HttpStatus.OK)
-			public String getimageCamplist(@PathVariable String contentId) {
-				String result = "";
-				//contentId = "3429";
+		//@RequestMapping(value = "/getimageCamplist/{contentId}", method = RequestMethod.GET)
+		@ResponseBody
+		@RequestMapping(value="/getimageCamplist", method = {RequestMethod.POST})
+		@ResponseStatus(value = HttpStatus.OK)
+		//public String getimageCamplist(@PathVariable String contentId) {
+		public String getimageCamplist(@RequestBody HashMap<String,Object> map) {
+			String result = "";
+			String contentId = map.get("contentId").toString();//"3429";
+			
+			try {
+				String appName = URLEncoder.encode("렛츠캠핑", "UTF-8");
+				String url = "http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/imageList";
+				String urlparam = "ServiceKey="+apikey		//인증키 (서비스키)
+						+ "&MobileOS=AND"			//OS 구분(IOS (아이폰), AND (안드로이드), WIN (윈도우폰), ETC))
+						+ "&MobileApp="+appName		//서비스명=어플명
+						+ "&contentId="+contentId	//콘텐츠ID
+						+ "&_type=json";
 				
-				try {
-					String appName = URLEncoder.encode("렛츠캠핑", "UTF-8");
-					String url = "http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/imageList";
-					String urlparam = "ServiceKey="+apikey		//인증키 (서비스키)
-							+ "&MobileOS=AND"			//OS 구분(IOS (아이폰), AND (안드로이드), WIN (윈도우폰), ETC))
-							+ "&MobileApp="+appName		//서비스명=어플명
-							+ "&contentId="+contentId	//콘텐츠ID
-							+ "&_type=json";
-					
-					//sendPost(url,urlparam);
-					
-					url += "?"+urlparam;
-					result = jsonParse(sendGet(url));
-					//result = sendGet(url);
-				} catch (UnsupportedEncodingException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				//sendPost(url,urlparam);
+				
+				url += "?"+urlparam;
+				result = jsonParsebody(sendGet(url));//jsonParse(sendGet(url));
+				//result = sendGet(url);
+				if(result.equals("")) {
+					result = "{\"item\":\"false\"}";
 				}
-				if(result.equals(null)) {result = "";}
-				return result;
+			} catch (UnsupportedEncodingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+			//if(result.equals(null)) {result = "";}
+			return result;
+		}
 	
 }
